@@ -1,0 +1,31 @@
+name: simple jobs
+on: [push]
+jobs: 
+   job1:    
+       runs-on: ubuntu-latest
+       steps: 
+         
+         
+          - run: date
+   job2:
+       runs-on: macos-latest
+       steps: 
+         
+         - uses: actions/checkout@v4
+         - run: date
+           
+   job3:
+   
+       runs-on: windows-latest
+       steps: 
+         
+         - uses: actions/checkout@v4
+         - run: Get-Date
+         
+   job4:
+      runs-on: ubuntu-latest
+      needs: [job1,job2,job3]
+      steps: 
+         - name: job4
+         - uses: actions/checkout@v4
+         - run: date
